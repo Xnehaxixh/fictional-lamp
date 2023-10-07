@@ -1,0 +1,7 @@
+{
+ "editor.codeActionsOnSave":{
+		"source.organizeImports.biome": true
+	},
+  "editor.formatOnSave": true,
+  "files.insertFinalNewline": true
+}

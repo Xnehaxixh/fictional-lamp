@@ -4,7 +4,10 @@
   "private": true,
   "scripts": {
     "start": "webpack serve --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js"
+    "build": "webpack --config webpack.prod.js",
+    "analyze": "biome check --apply-unsafe ./src",
+    "format": "biome format --write ./src",
+    "lint": "biome lint --apply ./src"
   },
   "dependencies": {
     "react": "^17.0.2",
@@ -15,6 +18,7 @@
     "@babel/core": "^7.13.16",
     "@babel/preset-env": "^7.13.15",
     "@babel/preset-react": "^7.13.13",
+    "@biomejs/biome": "1.2.2",
     "@types/node": "^20.8.3",
     "@types/react": "^18.2.25",
     "@types/react-dom": "^18.2.11",
