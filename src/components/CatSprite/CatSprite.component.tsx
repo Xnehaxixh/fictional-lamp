@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-export default function CatSprite() {
+export const CatSprite = (): JSX.Element => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -180,5 +180,5 @@ export default function CatSprite() {
         </g>
       </g>
     </svg>
-  );
+  )
 }
