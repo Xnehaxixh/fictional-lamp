@@ -11,6 +11,7 @@ import { IFlowData, IMidAreaElements } from "./Home.types";
 import { MidArea } from "./components/MidArea";
 import { PreviewArea } from "./components/PreviewArea";
 import { Sidebar } from "./components/Sidebar";
+import { TopBar } from "./components/TopBar";
 
 export const Home = (): JSX.Element => {
   const [elements, setElements] = useState<IMidAreaElements[]>([]);
@@ -63,19 +64,24 @@ export const Home = (): JSX.Element => {
   );
 
   return (
-    <DndContext onDragEnd={handleDragEnd} sensors={sensors}>
-      <div className="flex-1 h-screen overflow-hidden flex flex-row bg-white border-t border-r border-gray-200 rounded-tr-xl mr-2">
-        <Sidebar />
-        <MidArea
-          elements={elements}
-          flowData={flowData}
-          setFlowData={setFlowData}
-          removeElementAndFlowData={removeElementAndFlowData}
-        />
+    <div className="flex flex-col">
+      <TopBar />
+      <div className="h-screen overflow-hidden flex flex-row">
+        <div className="flex-1 h-screen overflow-hidden flex flex-row bg-white border-t border-r border-gray-200 rounded-tr-xl mr-2">
+          <DndContext onDragEnd={handleDragEnd} sensors={sensors}>
+            <Sidebar />
+            <MidArea
+              elements={elements}
+              flowData={flowData}
+              setFlowData={setFlowData}
+              removeElementAndFlowData={removeElementAndFlowData}
+            />
+          </DndContext>
+        </div>
+        <div className="w-1/3 h-screen overflow-hidden flex flex-col bg-white border-t border-l border-gray-200 rounded-tl-xl ml-2">
+          <PreviewArea />
+        </div>
       </div>
-      <div className="w-1/3 h-screen overflow-hidden flex flex-row bg-white border-t border-l border-gray-200 rounded-tl-xl ml-2">
-        <PreviewArea />
-      </div>
-    </DndContext>
+    </div>
   );
 };

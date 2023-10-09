@@ -5,8 +5,8 @@ import {
   looksCodeBlocksConfig,
   motionCodeBlocksConfig
 } from "../../../../components/CodeBlocks";
+import { DraggableItemWithData } from "../../../../components/DndComponents/DraggableItemWithData";
 import { withColorWrapper } from "../../../../hocs/WrapBlockWithColor";
-import { DraggableItemWithData } from "../DndComponents/DraggableItemWithData";
 import { NAV_CONFIG } from "./Sidebar.constants";
 
 export const BlocksContainer = ({

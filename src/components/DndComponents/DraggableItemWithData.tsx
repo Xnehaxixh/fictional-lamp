@@ -1,6 +1,6 @@
 import { useDraggable } from "@dnd-kit/core";
 import React, { CSSProperties, useState } from "react";
-import { IConfigBlockProps } from "../../../../components/CodeBlocks/CodeBlocks.types";
+import { IConfigBlockProps } from "../CodeBlocks/CodeBlocks.types";
 
 export const DraggableItemWithData = ({
   id,
