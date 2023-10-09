@@ -1,5 +1,6 @@
 export const FIELD_CONFIG = {
   motion: {
+    name: "motion",
     moveSteps: {
       name: "moveSteps",
       fields: {
@@ -138,6 +139,7 @@ export const FIELD_CONFIG = {
     },
   },
   looks: {
+    name: "looks",
     sayFor: {
       name: "sayFor",
       fields: {
@@ -282,6 +284,7 @@ export const FIELD_CONFIG = {
     },
   },
   events: {
+    name: "events",
     whenGreenFlag: {
       name: "whenGreenFlag",
     },
@@ -341,6 +344,7 @@ export const FIELD_CONFIG = {
     },
   },
   control: {
+    name: "control",
     wait: {
       name: "wait",
       fields: {

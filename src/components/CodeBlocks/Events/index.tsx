@@ -131,42 +131,50 @@ export const BroadcastAndWaitBlock = ({
 export const eventsCodeBlocksConfig: IBlockConfig[] = [
   {
     key: FIELD_CONFIG.events.whenGreenFlag.name,
-    type: "event",
+    category: "event",
     Component: WhenGreenFlagBlock,
+    disabled: true,
   },
   {
     key: FIELD_CONFIG.events.whenKeyPressed.name,
-    type: "event",
+    category: "event",
     Component: WhenKeyPressedBlock,
+    disabled: true,
   },
   {
     key: FIELD_CONFIG.events.whenSpriteClicked.name,
-    type: "event",
+    category: "event",
     Component: WhenSpriteClickedBlock,
+    disabled: true,
   },
   {
     key: FIELD_CONFIG.events.whenBackdropSwitches.name,
-    type: "event",
+    category: "event",
     Component: WhenBackdropSwitchesBlock,
+    disabled: true,
   },
   {
     key: FIELD_CONFIG.events.whenCriteriaGreaterThan.name,
-    type: "event",
+    category: "event",
     Component: WhenCriteriaGreaterThanBlock,
+    disabled: true,
   },
   {
     key: FIELD_CONFIG.events.whenIReceive.name,
-    type: "event",
+    category: "event",
     Component: WhenIReceiveBlock,
+    disabled: true,
   },
   {
     key: FIELD_CONFIG.events.broadcast.name,
-    type: "event",
+    category: "event",
     Component: BroadcastBlock,
+    disabled: true,
   },
   {
     key: FIELD_CONFIG.events.broadcastAndWait.name,
-    type: "event",
+    category: "event",
     Component: BroadcastAndWaitBlock,
+    disabled: true,
   },
 ];

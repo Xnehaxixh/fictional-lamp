@@ -1,0 +1,41 @@
+.bubble {
+  display: inline-block;
+  padding: 0 15px;
+  border: 1px solid black;
+  position: relative;
+  border-radius: 30px;
+}
+
+.thought {
+  border-radius: 200px;
+}
+
+.bubble:before,
+.bubble:after {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.thought:before,
+.thought:after {
+  left: 10px;
+  bottom: -20px;
+  width: 20px;
+  height: 20px;
+  border: 1px solid black;
+  -webkit-border-radius: 28px;
+  -moz-border-radius: 28px;
+  border-radius: 28px;
+}
+
+.thought:after {
+  width: 10px;
+  height: 10px;
+  left: 5px;
+  bottom: -25px;
+  -webkit-border-radius: 18px;
+  -moz-border-radius: 18px;
+  border-radius: 18px;
+}

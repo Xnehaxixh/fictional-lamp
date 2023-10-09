@@ -229,8 +229,8 @@ export const SetRotationStyleBlock = ({
       onFieldValueChange={onFieldValueChange}
       options={[
         { value: "left-right", label: "left-right" },
-        { value: "don't rotate", label: "don't rotate" },
-        { value: "all around", label: "all around" },
+        { value: "dont-rotate", label: "don't rotate" },
+        { value: "all-around", label: "all around" },
       ]}
     />
   </>
@@ -245,7 +245,7 @@ export const DirectionBlock = () => <>{"direction "}</>;
 export const motionCodeBlocksConfig: IBlockConfig[] = [
   {
     key: FIELD_CONFIG.motion.moveSteps.name,
-    type: "motion",
+    category: "motion",
     Component: MoveStepsBlock,
     defaultData: {
       steps: 10,
@@ -253,7 +253,7 @@ export const motionCodeBlocksConfig: IBlockConfig[] = [
   },
   {
     key: FIELD_CONFIG.motion.turnRight.name,
-    type: "motion",
+    category: "motion",
     Component: TurnRightBlock,
     defaultData: {
       steps: 15,
@@ -261,7 +261,7 @@ export const motionCodeBlocksConfig: IBlockConfig[] = [
   },
   {
     key: FIELD_CONFIG.motion.turnLeft.name,
-    type: "motion",
+    category: "motion",
     Component: TurnLeftBlock,
     defaultData: {
       steps: 15,
@@ -269,15 +269,15 @@ export const motionCodeBlocksConfig: IBlockConfig[] = [
   },
   {
     key: FIELD_CONFIG.motion.goToAutomaticPosition.name,
-    type: "motion",
+    category: "motion",
     Component: GoToAutomaticPositionBlock,
     defaultData: {
-      position: "mouse-pointer",
+      position: "random",
     },
   },
   {
     key: FIELD_CONFIG.motion.goToManualPosition.name,
-    type: "motion",
+    category: "motion",
     Component: GoToManualPositionBlock,
     defaultData: {
       x: 0,
@@ -286,16 +286,16 @@ export const motionCodeBlocksConfig: IBlockConfig[] = [
   },
   {
     key: FIELD_CONFIG.motion.glideToAutomaticPosition.name,
-    type: "motion",
+    category: "motion",
     Component: GlideToAutomaticPositionBlock,
     defaultData: {
       secs: 1,
-      position: "mouse-pointer",
+      position: "random",
     },
   },
   {
     key: FIELD_CONFIG.motion.glideToManualPosition.name,
-    type: "motion",
+    category: "motion",
     Component: GlideToManualPositionBlock,
     defaultData: {
       secs: 1,
@@ -305,7 +305,7 @@ export const motionCodeBlocksConfig: IBlockConfig[] = [
   },
   {
     key: FIELD_CONFIG.motion.pointInManualDirection.name,
-    type: "motion",
+    category: "motion",
     Component: PointInManualDirectionBlock,
     defaultData: {
       direction: 90,
@@ -313,15 +313,15 @@ export const motionCodeBlocksConfig: IBlockConfig[] = [
   },
   {
     key: FIELD_CONFIG.motion.pointInAutomaticDirection.name,
-    type: "motion",
+    category: "motion",
     Component: PointInAutomaticDirectionBlock,
     defaultData: {
-      position: "mouse-pointer",
+      position: "random",
     },
   },
   {
     key: FIELD_CONFIG.motion.changeX.name,
-    type: "motion",
+    category: "motion",
     Component: ChangeXBlock,
     defaultData: {
       x: 10,
@@ -329,7 +329,7 @@ export const motionCodeBlocksConfig: IBlockConfig[] = [
   },
   {
     key: FIELD_CONFIG.motion.setX.name,
-    type: "motion",
+    category: "motion",
     Component: SetXBlock,
     defaultData: {
       x: 0,
@@ -337,7 +337,7 @@ export const motionCodeBlocksConfig: IBlockConfig[] = [
   },
   {
     key: FIELD_CONFIG.motion.changeY.name,
-    type: "motion",
+    category: "motion",
     Component: ChangeYBlock,
     defaultData: {
       y: 10,
@@ -345,7 +345,7 @@ export const motionCodeBlocksConfig: IBlockConfig[] = [
   },
   {
     key: FIELD_CONFIG.motion.setY.name,
-    type: "motion",
+    category: "motion",
     Component: SetYBlock,
     defaultData: {
       y: 0,
@@ -353,30 +353,35 @@ export const motionCodeBlocksConfig: IBlockConfig[] = [
   },
   {
     key: FIELD_CONFIG.motion.bounceOnEdge.name,
-    type: "motion",
+    category: "motion",
     Component: BounceOnEdgeBlock,
+    disabled: true,
   },
   {
     key: FIELD_CONFIG.motion.setRotationStyle.name,
-    type: "motion",
+    category: "motion",
     Component: SetRotationStyleBlock,
     defaultData: {
       style: "left-right",
     },
+    disabled: true,
   },
   {
     key: FIELD_CONFIG.motion.xPosition.name,
-    type: "motion",
+    category: "motion",
     Component: XPositionBlock,
+    disabled: true,
   },
   {
     key: FIELD_CONFIG.motion.yPosition.name,
-    type: "motion",
+    category: "motion",
     Component: YPositionBlock,
+    disabled: true,
   },
   {
     key: FIELD_CONFIG.motion.direction.name,
-    type: "motion",
+    category: "motion",
     Component: DirectionBlock,
+    disabled: true,
   },
 ];

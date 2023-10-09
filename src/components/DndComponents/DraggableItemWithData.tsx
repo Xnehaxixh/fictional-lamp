@@ -4,14 +4,18 @@ import { IConfigBlockProps } from "../CodeBlocks/CodeBlocks.types";
 
 export const DraggableItemWithData = ({
   id,
+  category,
   type,
   Component,
   defaultData = {},
+  disabled = false,
 }: {
   id: string;
+  category: string;
   type: string;
   Component: React.FC<IConfigBlockProps> | React.FC;
   defaultData?: Record<string, unknown>;
+  disabled?: boolean;
 }) => {
   const [data, setData] = useState<Record<string, unknown>>(defaultData);
   const { attributes, listeners, setNodeRef, transform, isDragging } =
@@ -19,10 +23,12 @@ export const DraggableItemWithData = ({
       id: id,
       data: {
         id,
+        category,
         type,
         Component,
         data,
       },
+      disabled,
     });
 
   const style: CSSProperties | undefined = isDragging
@@ -32,7 +38,7 @@ export const DraggableItemWithData = ({
       cursor: "move",
     }
     : {
-      cursor: "grab",
+      cursor: disabled ? "not-allowed" : "grab",
     };
 
   const renderedNode = (

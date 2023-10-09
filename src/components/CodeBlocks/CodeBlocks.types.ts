@@ -7,7 +7,8 @@ export interface IConfigBlockProps {
 
 export interface IBlockConfig {
   key: string;
-  type: keyof typeof NAV_CONFIG;
+  category: keyof typeof NAV_CONFIG;
   Component: React.FC<IConfigBlockProps> | React.FC;
   defaultData?: Record<string, unknown>;
+  disabled?: boolean;
 }

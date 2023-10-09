@@ -1,7 +1,13 @@
 import React from "react";
-import { Icon } from "../../../../components/Icon";
+import { Button } from "../../../../components/Button/Button.component";
 
-export const TopBar = () => {
+export const TopBar = ({
+  isPlaying,
+  setIsPlaying
+}: {
+  isPlaying: boolean;
+  setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   return (
     <div className="bg-blue-100 pb-3">
       <div className="flex flex-row">
@@ -11,12 +17,24 @@ export const TopBar = () => {
         <div className="w-1/3">
           {/* Preview Area Items */}
           <div className="flex flex-row">
-            <button type="button" className="hover:bg-blue-300 rounded p-1 mx-1">
-              <Icon name="flag" size={20} className="text-green-600" />
-            </button>
-            <button type="button" className="hover:bg-blue-300 rounded p-1 mx-1">
-              <Icon name="stop" size={20} className="text-red-600" />
-            </button>
+            <Button type="button"
+              twTextColor="green-600"
+              twButtonHoverColor="blue-300"
+              disabled={isPlaying}
+              onClick={() => {
+                setIsPlaying(true);
+              }}
+              faIcon="flag"
+            />
+            <Button type="button"
+              twTextColor="red-600"
+              twButtonHoverColor="blue-300"
+              disabled={!isPlaying}
+              onClick={() => {
+                setIsPlaying(false);
+              }}
+              faIcon="stop"
+            />
           </div>
         </div>
       </div>
