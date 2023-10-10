@@ -17,6 +17,7 @@ interface IWrapWithContextMenuProps {
   config?: {
     wrapperClassName?: string;
     itemClassName?: string;
+    activationClick?: "right" | "left";
   };
 }
 
@@ -28,6 +29,7 @@ export const WrapWithContextMenu = ({
   config,
 }: IWrapWithContextMenuProps) => {
   const contextMenuId = `${id}-context-menu`;
+  const mouseButton = config?.activationClick === "left" ? 0 : 2;
 
   return (
     <>
@@ -38,7 +40,7 @@ export const WrapWithContextMenu = ({
         */
       }
       {/* @ts-ignore */}
-      <ContextMenuTrigger id={contextMenuId}>
+      <ContextMenuTrigger id={contextMenuId} mouseButton={mouseButton}>
         {children}
       </ContextMenuTrigger>
 

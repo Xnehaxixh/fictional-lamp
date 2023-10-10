@@ -1,4 +1,5 @@
 import React from 'react'
+import { AbbySprite } from '../../../../components/AbbySprite';
 import { CatSprite } from '../../../../components/CatSprite'
 import { ChatBubble } from '../../../../components/ChatBubble';
 import { ThoughtBubble } from '../../../../components/ThoughBubble';
@@ -9,16 +10,22 @@ export const PreviewArea = ({
   flowData,
   isPlaying,
   setIsPlaying,
+  sprite,
 }: {
   flowData: Array<IFlowData>,
   isPlaying: boolean;
   setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>;
+  sprite: string;
 }): JSX.Element => {
   const { xPos, yPos, angleInDeg, animationDuration, message, messageType, size, executeFlowData } = useAnimation();
-  const [count, setCount] = React.useState(0);
 
   const processFlowDataQueue = async () => {
+    if (!isPlaying) {
+      return;
+    };
+
     for (const item of flowData) {
+      console.log('item', item);
       if (!isPlaying) {
         break;
       };
@@ -36,7 +43,7 @@ export const PreviewArea = ({
   }, [isPlaying])
 
   return (
-    <div className="flex-none h-full overflow-y-auto p-2">
+    <div className="flex-none h-full overflow-hidden p-2">
       <div className='flex' style={{
         position: "relative",
         top: yPos,
@@ -47,7 +54,8 @@ export const PreviewArea = ({
           rotate: `${angleInDeg}deg`,
           scale: `${size}`,
         }}>
-          <CatSprite />
+          {sprite === 'cat' && (<CatSprite />)}
+          {sprite === 'abby' && (<AbbySprite />)}
         </div>
 
         {message && (
