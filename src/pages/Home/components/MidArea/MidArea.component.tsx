@@ -1,6 +1,6 @@
 import React from "react";
 import { DroppableArea } from "../../../../components/DndComponents/DroppableArea";
-import { blockContextMenuOptions, contextMenuClassConfig } from "../../../../constants/contextMenu.constants";
+import { blockContextMenuOptions, contextMenuConfig } from "../../../../constants/contextMenu.constants";
 import { WithContextMenu } from "../../../../hocs/WithContextMenu";
 import { IFlowData, IMidAreaElements } from "../../Home.types";
 
@@ -44,7 +44,7 @@ export const MidArea = ({
         (_event, _data) => {
           removeElementAndFlowData(element.id);
         },
-        contextMenuClassConfig,
+        contextMenuConfig,
       );
 
       return (
