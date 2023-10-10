@@ -278,7 +278,7 @@ export const SizeBlock = () => (
 export const looksCodeBlocksConfig: IBlockConfig[] = [
   {
     key: FIELD_CONFIG.looks.sayFor.name,
-    type: "looks",
+    category: "looks",
     Component: SayForBlock,
     defaultData: {
       message: "Hello!",
@@ -287,7 +287,7 @@ export const looksCodeBlocksConfig: IBlockConfig[] = [
   },
   {
     key: FIELD_CONFIG.looks.say.name,
-    type: "looks",
+    category: "looks",
     Component: SayBlock,
     defaultData: {
       message: "Hello!",
@@ -295,7 +295,7 @@ export const looksCodeBlocksConfig: IBlockConfig[] = [
   },
   {
     key: FIELD_CONFIG.looks.thinkFor.name,
-    type: "looks",
+    category: "looks",
     Component: ThinkForBlock,
     defaultData: {
       message: "Hmm...",
@@ -304,7 +304,7 @@ export const looksCodeBlocksConfig: IBlockConfig[] = [
   },
   {
     key: FIELD_CONFIG.looks.think.name,
-    type: "looks",
+    category: "looks",
     Component: ThinkBlock,
     defaultData: {
       message: "Hmm...",
@@ -312,33 +312,37 @@ export const looksCodeBlocksConfig: IBlockConfig[] = [
   },
   {
     key: FIELD_CONFIG.looks.switchCostume.name,
-    type: "looks",
+    category: "looks",
     Component: SwitchCostumeBlock,
+    disabled: true,
     defaultData: {
       costume: "costume1",
     },
   },
   {
     key: FIELD_CONFIG.looks.nextCostume.name,
-    type: "looks",
+    category: "looks",
     Component: NextCostumeBlock,
+    disabled: true,
   },
   {
     key: FIELD_CONFIG.looks.switchBackdrop.name,
-    type: "looks",
+    category: "looks",
     Component: SwitchBackdropBlock,
+    disabled: true,
     defaultData: {
       backdrop: "backdrop1",
     },
   },
   {
     key: FIELD_CONFIG.looks.nextBackdrop.name,
-    type: "looks",
+    category: "looks",
     Component: NextBackdropBlock,
+    disabled: true,
   },
   {
     key: FIELD_CONFIG.looks.changeSize.name,
-    type: "looks",
+    category: "looks",
     Component: ChangeSizeBlock,
     defaultData: {
       size: 10,
@@ -346,7 +350,7 @@ export const looksCodeBlocksConfig: IBlockConfig[] = [
   },
   {
     key: FIELD_CONFIG.looks.setSize.name,
-    type: "looks",
+    category: "looks",
     Component: SetSizeBlock,
     defaultData: {
       size: 100,
@@ -354,8 +358,9 @@ export const looksCodeBlocksConfig: IBlockConfig[] = [
   },
   {
     key: FIELD_CONFIG.looks.changeColorEffect.name,
-    type: "looks",
+    category: "looks",
     Component: ChangeColorEffectBlock,
+    disabled: true,
     defaultData: {
       effect: "color",
       value: 25,
@@ -363,8 +368,9 @@ export const looksCodeBlocksConfig: IBlockConfig[] = [
   },
   {
     key: FIELD_CONFIG.looks.setColorEffect.name,
-    type: "looks",
+    category: "looks",
     Component: SetColorEffectBlock,
+    disabled: true,
     defaultData: {
       effect: "color",
       value: 25,
@@ -372,54 +378,62 @@ export const looksCodeBlocksConfig: IBlockConfig[] = [
   },
   {
     key: FIELD_CONFIG.looks.clearEffects.name,
-    type: "looks",
+    category: "looks",
     Component: ClearEffectsBlock,
+    disabled: true,
   },
   {
     key: FIELD_CONFIG.looks.show.name,
-    type: "looks",
+    category: "looks",
     Component: ShowBlock,
+    disabled: true,
   },
   {
     key: FIELD_CONFIG.looks.hide.name,
-    type: "looks",
+    category: "looks",
     Component: HideBlock,
+    disabled: true,
   },
   {
     key: FIELD_CONFIG.looks.goToLayer.name,
-    type: "looks",
+    category: "looks",
     Component: GoToLayerBlock,
+    disabled: true,
     defaultData: {
       layer: 1,
     },
   },
   {
     key: FIELD_CONFIG.looks.goForwardLayers.name,
-    type: "looks",
+    category: "looks",
     Component: GoForwardLayersBlock,
+    disabled: true,
     defaultData: {
       layers: 1,
     },
   },
   {
     key: FIELD_CONFIG.looks.costumeNumber.name,
-    type: "looks",
+    category: "looks",
     Component: CostumeNumberBlock,
+    disabled: true,
     defaultData: {
       identifier: "number",
     },
   },
   {
     key: FIELD_CONFIG.looks.backdropNumber.name,
-    type: "looks",
+    category: "looks",
     Component: BackdropNumberBlock,
+    disabled: true,
     defaultData: {
       identifier: "number",
     },
   },
   {
     key: FIELD_CONFIG.looks.size.name,
-    type: "looks",
+    category: "looks",
     Component: SizeBlock,
+    disabled: true,
   },
 ];

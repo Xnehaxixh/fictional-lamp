@@ -1,8 +1,8 @@
 import React from "react";
+import { DroppableArea } from "../../../../components/DndComponents/DroppableArea";
 import { blockContextMenuOptions, contextMenuClassConfig } from "../../../../constants/contextMenu.constants";
 import { WithContextMenu } from "../../../../hocs/WithContextMenu";
 import { IFlowData, IMidAreaElements } from "../../Home.types";
-import { DroppableArea } from "../DndComponents/DroppableArea";
 
 export const MidArea = ({
   elements,
