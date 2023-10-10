@@ -1,5 +1,5 @@
 import React from 'react'
-import { CatSprite } from '../../../components/CatSprite'
+import { CatSprite } from '../../../../components/CatSprite'
 
 export const PreviewArea = (): JSX.Element => {
   return (
