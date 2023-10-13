@@ -6,7 +6,7 @@ import {
   useSensors,
 } from "@dnd-kit/core";
 import { nanoid } from "nanoid";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { ChangeSpriteButton } from "../../components/ChangeSpriteButton";
 import { IFlowData, IMidAreaElements } from "./Home.types";
 import { MidArea } from "./components/MidArea";
@@ -16,9 +16,11 @@ import { TopBar } from "./components/TopBar";
 
 export const Home = (): JSX.Element => {
   const [elements, setElements] = useState<IMidAreaElements[]>([]);
-  const [flowData, setFlowData] = useState<Array<IFlowData>>([]);
   const [isPlaying, setIsPlaying] = useState(false);
   const [sprite, setSprite] = useState('cat');
+
+  // Refs
+  const flowData = useRef<Array<IFlowData>>([]);
 
   // Sprite Helpers
   const handleSpriteChange = (sprite: string) => {
@@ -47,15 +49,15 @@ export const Home = (): JSX.Element => {
       data: element.data,
     };
 
-    setFlowData([...flowData, ...[currentFlowData]]);
+    flowData.current.push(currentFlowData);
   }
 
   const removeElementAndFlowData = (id: string) => {
     const tempElements = elements.filter((element) => element.id !== id);
-    const tempFlowData = flowData.filter((item) => item.id !== id);
+    const tempFlowData = flowData.current.filter((item) => item.id !== id);
 
     setElements(tempElements);
-    setFlowData(tempFlowData);
+    flowData.current = tempFlowData;
   }
 
   // Dnd Helpers
@@ -85,7 +87,6 @@ export const Home = (): JSX.Element => {
             <MidArea
               elements={elements}
               flowData={flowData}
-              setFlowData={setFlowData}
               removeElementAndFlowData={removeElementAndFlowData}
             />
           </DndContext>
