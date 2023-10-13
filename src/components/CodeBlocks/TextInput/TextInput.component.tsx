@@ -23,7 +23,7 @@ const TextInputBase = ({
     <input
       style={{ color: "#000", textAlign: "center" }}
       onChange={(e) => onFieldValueChange(fieldName, e.target.value)}
-      value={data[fieldName] as string}
+      defaultValue={data[fieldName] as string}
       name={fieldName}
       className={`${twWidth} mx-2 rounded-full`}
     />

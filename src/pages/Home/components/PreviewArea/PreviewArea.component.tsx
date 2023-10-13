@@ -12,7 +12,7 @@ export const PreviewArea = ({
   setIsPlaying,
   sprite,
 }: {
-  flowData: Array<IFlowData>,
+  flowData: React.MutableRefObject<Array<IFlowData>>;
   isPlaying: boolean;
   setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>;
   sprite: string;
@@ -24,8 +24,7 @@ export const PreviewArea = ({
       return;
     };
 
-    for (const item of flowData) {
-      console.log('item', item);
+    for (const item of flowData.current) {
       if (!isPlaying) {
         break;
       };

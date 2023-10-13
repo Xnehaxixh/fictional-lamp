@@ -7,17 +7,15 @@ import { IFlowData, IMidAreaElements } from "../../Home.types";
 export const MidArea = ({
   elements,
   flowData,
-  setFlowData,
   removeElementAndFlowData,
 }: {
   elements: IMidAreaElements[];
-  flowData: Array<IFlowData>;
-  setFlowData: React.Dispatch<React.SetStateAction<IFlowData[]>>;
+  flowData: React.MutableRefObject<Array<IFlowData>>;
   removeElementAndFlowData: (id: string) => void;
 }) => {
   // FLow Data Helpers
   const updateFlowDataById = (id: string, fieldName: string, value: string) => {
-    const tempFlowData = flowData.map((item) => {
+    const tempFlowData = flowData.current.map((item) => {
       if (item.id === id) {
         return {
           ...item,
@@ -30,7 +28,7 @@ export const MidArea = ({
       return item;
     });
 
-    setFlowData(tempFlowData);
+    flowData.current = tempFlowData;
   };
 
   // Render Helpers
@@ -51,7 +49,7 @@ export const MidArea = ({
         <div key={element.id}>
           {BlockWithContextMenu && (
             <BlockWithContextMenu
-              data={flowData[index].data}
+              data={flowData.current[index].data}
               onFieldValueChange={(fieldName, value) => {
                 updateFlowDataById(element.id, fieldName, value);
               }}

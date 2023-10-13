@@ -23,7 +23,7 @@ export const SelectInputBase = ({
       defaultValue={data[fieldName] as string}
     >
       {options.map((item) => (
-        <option value={item.value}>{item.label}</option>
+        <option key={item.value} value={item.value}>{item.label}</option>
       ))}
     </select>
   );
