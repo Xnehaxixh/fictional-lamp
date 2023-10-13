@@ -25,7 +25,6 @@ export const PreviewArea = ({
     };
 
     for (const item of flowData) {
-      console.log('item', item);
       if (!isPlaying) {
         break;
       };
