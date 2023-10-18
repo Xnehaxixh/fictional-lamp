@@ -8,6 +8,7 @@ import {
 import { nanoid } from "nanoid";
 import React, { useRef, useState } from "react";
 import { ChangeSpriteButton } from "../../components/ChangeSpriteButton";
+import { pointerSensorConfig } from "../../components/DndComponents/config";
 import { IFlowData, IMidAreaElements } from "./Home.types";
 import { MidArea } from "./components/MidArea";
 import { PreviewArea } from "./components/PreviewArea";
@@ -60,6 +61,11 @@ export const Home = (): JSX.Element => {
     flowData.current = tempFlowData;
   }
 
+  const updateElementsAndFlowData = (newElements: IMidAreaElements[], newFlowData: IFlowData[]) => {
+    setElements(newElements);
+    flowData.current = newFlowData;
+  };
+
   // Dnd Helpers
   const handleDragEnd = (event: DragEndEvent) => {
     const currentElement = event.active.data.current as IMidAreaElements;
@@ -70,11 +76,7 @@ export const Home = (): JSX.Element => {
   };
 
   const sensors = useSensors(
-    useSensor(PointerSensor, {
-      activationConstraint: {
-        distance: 8,
-      },
-    }),
+    useSensor(PointerSensor, pointerSensorConfig),
   );
 
   return (
@@ -88,6 +90,7 @@ export const Home = (): JSX.Element => {
               elements={elements}
               flowData={flowData}
               removeElementAndFlowData={removeElementAndFlowData}
+              updateElementsAndFlowData={updateElementsAndFlowData}
             />
           </DndContext>
         </div>

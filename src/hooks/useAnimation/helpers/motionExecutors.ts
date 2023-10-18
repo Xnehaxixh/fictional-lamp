@@ -3,6 +3,13 @@ import { IFlowData } from "../../../pages/Home/Home.types";
 import { MAX_LIMIT } from "../useAnimation.constants";
 import { IAnimationStates } from "../useAnimation.types";
 
+const boundaryCheck = (value: number, maxValue: number) => {
+  if (value < 0) {
+    return 0;
+  }
+
+  return value > maxValue ? maxValue : value;
+}
 
 export const motionExecutor = (flowData: IFlowData, animationStates: IAnimationStates) => {
   let localAnimationStates = animationStates;
@@ -18,8 +25,8 @@ export const motionExecutor = (flowData: IFlowData, animationStates: IAnimationS
       const finalYPos = localAnimationStates.yPos + yIncrement;
       localAnimationStates = {
         ...localAnimationStates,
-        xPos: finalXPos > MAX_LIMIT.X ? MAX_LIMIT.X : finalXPos,
-        yPos: finalYPos > MAX_LIMIT.Y ? MAX_LIMIT.Y : finalYPos,
+        xPos: boundaryCheck(finalXPos, MAX_LIMIT.X),
+        yPos: boundaryCheck(finalYPos, MAX_LIMIT.Y),
       }
 
       break;
@@ -71,8 +78,8 @@ export const motionExecutor = (flowData: IFlowData, animationStates: IAnimationS
 
       localAnimationStates = {
         ...localAnimationStates,
-        xPos: Number(x) > MAX_LIMIT.X ? MAX_LIMIT.X : Number(x),
-        yPos: Number(y) > MAX_LIMIT.Y ? MAX_LIMIT.Y : Number(y),
+        xPos: boundaryCheck(Number(x), MAX_LIMIT.X),
+        yPos: boundaryCheck(Number(y), MAX_LIMIT.Y),
       }
     }
 
@@ -110,8 +117,8 @@ export const motionExecutor = (flowData: IFlowData, animationStates: IAnimationS
       localAnimationStates = {
         ...localAnimationStates,
         animationDuration: Number(duration),
-        xPos: Number(x) > MAX_LIMIT.X ? MAX_LIMIT.X : Number(x),
-        yPos: Number(y) > MAX_LIMIT.Y ? MAX_LIMIT.Y : Number(y),
+        xPos: boundaryCheck(Number(x), MAX_LIMIT.X),
+        yPos: boundaryCheck(Number(y), MAX_LIMIT.Y),
       }
 
       break;
@@ -153,7 +160,7 @@ export const motionExecutor = (flowData: IFlowData, animationStates: IAnimationS
 
       localAnimationStates = {
         ...localAnimationStates,
-        xPos: finalXPos > MAX_LIMIT.X ? MAX_LIMIT.X : finalXPos,
+        xPos: boundaryCheck(finalXPos, MAX_LIMIT.X),
       }
 
       break;
@@ -164,7 +171,7 @@ export const motionExecutor = (flowData: IFlowData, animationStates: IAnimationS
 
       localAnimationStates = {
         ...localAnimationStates,
-        xPos: Number(x) > MAX_LIMIT.X ? MAX_LIMIT.X : Number(x),
+        xPos: boundaryCheck(Number(x), MAX_LIMIT.X),
       }
 
       break;
@@ -177,7 +184,7 @@ export const motionExecutor = (flowData: IFlowData, animationStates: IAnimationS
 
       localAnimationStates = {
         ...localAnimationStates,
-        yPos: finalYPos > MAX_LIMIT.Y ? MAX_LIMIT.Y : finalYPos,
+        yPos: boundaryCheck(finalYPos, MAX_LIMIT.X),
       }
 
       break;
@@ -188,7 +195,7 @@ export const motionExecutor = (flowData: IFlowData, animationStates: IAnimationS
 
       localAnimationStates = {
         ...localAnimationStates,
-        yPos: Number(y) > MAX_LIMIT.Y ? MAX_LIMIT.Y : Number(y),
+        yPos: boundaryCheck(Number(y), MAX_LIMIT.Y),
       }
 
       break;
