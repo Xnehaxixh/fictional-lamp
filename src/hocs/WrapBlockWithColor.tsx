@@ -9,10 +9,12 @@ interface IWrapWithColorProps {
 
 const WrapWithColor = ({ type, children, disabled }: IWrapWithColorProps) => {
   const color = NAV_CONFIG[type]?.color || "gray";
+  const textColor = type === "event" && !disabled ? "black" : "white";
 
   return (
-    <div className={"flex flex-row flex-wrap text-white px-2 py-1 my-2 text-sm cursor-grab"} style={{
+    <div className={"rounded flex flex-row flex-wrap text-white px-2 py-1 my-2 text-sm cursor-grab"} style={{
       backgroundColor: disabled ? "gray" : color,
+      color: textColor,
     }}>
       {children}
     </div>

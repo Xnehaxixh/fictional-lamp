@@ -133,7 +133,6 @@ export const eventsCodeBlocksConfig: IBlockConfig[] = [
     key: FIELD_CONFIG.events.whenGreenFlag.name,
     category: "event",
     Component: WhenGreenFlagBlock,
-    disabled: true,
   },
   {
     key: FIELD_CONFIG.events.whenKeyPressed.name,
@@ -145,7 +144,6 @@ export const eventsCodeBlocksConfig: IBlockConfig[] = [
     key: FIELD_CONFIG.events.whenSpriteClicked.name,
     category: "event",
     Component: WhenSpriteClickedBlock,
-    disabled: true,
   },
   {
     key: FIELD_CONFIG.events.whenBackdropSwitches.name,
