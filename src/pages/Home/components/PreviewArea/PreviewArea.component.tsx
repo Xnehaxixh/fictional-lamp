@@ -4,7 +4,7 @@ import { CatSprite } from '../../../../components/CatSprite'
 import { ChatBubble } from '../../../../components/ChatBubble';
 import { ThoughtBubble } from '../../../../components/ThoughBubble';
 import { useAnimation } from '../../../../hooks/useAnimation';
-import { IFlowData } from '../../Home.types'
+import { IContainerFlowData, IFlowData } from '../../Home.types'
 
 export const PreviewArea = ({
   flowData,
@@ -12,33 +12,45 @@ export const PreviewArea = ({
   setIsPlaying,
   sprite,
 }: {
-  flowData: React.MutableRefObject<Array<IFlowData>>;
+  flowData: React.MutableRefObject<IContainerFlowData[]>;
   isPlaying: boolean;
   setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>;
   sprite: string;
 }): JSX.Element => {
   const { xPos, yPos, angleInDeg, animationDuration, message, messageType, size, executeFlowData } = useAnimation();
 
-  const processFlowDataQueue = async () => {
-    if (!isPlaying) {
-      return;
-    };
+  const processFlowDataQueue = async (containerFlowData: IFlowData[], startFrom: number) => {
+    for (let i = startFrom; i < containerFlowData.length; i++) {
+      await executeFlowData(containerFlowData[i]);
+    }
+  }
 
-    for (const item of flowData.current) {
-      if (!isPlaying) {
-        break;
-      };
+  const handleStart = async (triggedFromType: string) => {
+    let flowDataIndex = -1;
+    let blockIndex = -1;
 
-      await executeFlowData(item);
+    for (let index = 0; index < flowData.current.length; index++) {
+      blockIndex = flowData.current[index].data.findIndex((item) => item.type === triggedFromType);
 
+      if (blockIndex !== -1) {
+        flowDataIndex = index;
+
+        await processFlowDataQueue(flowData.current[index].data, blockIndex);
+      }
     }
 
-    setIsPlaying(false);
+    if (triggedFromType === 'whenGreenFlag') {
+      setIsPlaying(false);
+    }
   }
 
   // If the isPlaying state changes, we process the flow data queue
   React.useEffect(() => {
-    processFlowDataQueue();
+    if (!isPlaying) {
+      return;
+    }
+
+    handleStart('whenGreenFlag');
   }, [isPlaying])
 
   return (
@@ -49,13 +61,17 @@ export const PreviewArea = ({
         left: xPos,
         transition: `all ${animationDuration}s linear`,
       }}>
-        <div className='inline-block' style={{
-          rotate: `${angleInDeg}deg`,
-          scale: `${size}`,
-        }}>
+        <button
+          className='inline-block'
+          type='button'
+          onClick={() => handleStart('whenSpriteClicked')}
+          style={{
+            rotate: `${angleInDeg}deg`,
+            scale: `${size}`,
+          }}>
           {sprite === 'cat' && (<CatSprite />)}
           {sprite === 'abby' && (<AbbySprite />)}
-        </div>
+        </button>
 
         {message && (
           messageType === 'say' ? (

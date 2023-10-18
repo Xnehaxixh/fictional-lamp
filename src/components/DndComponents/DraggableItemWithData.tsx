@@ -56,7 +56,7 @@ export const DraggableItemWithData = ({
         {renderedNode}
       </div>
       {isDragging && (
-        <div style={{ display: "none !important" }}>{renderedNode}</div>
+        <div>{renderedNode}</div>
       )}
     </>
   );
